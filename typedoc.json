@@ -1,0 +1,32 @@
+{
+     "$schema": "https://typedoc.org/schema.json",
+    "entryPoints": ["src/app.plugin.ts"],
+    "out": "docs",
+    "name": "Expo Inject",
+    "sidebarLinks": {
+        "GitHub": "https://github.com/codeauthor1/expo-inject",
+    },
+    "gitRemote": "https://github.com/codeauthor1/expo-inject",
+    "githubPages": true,
+    "useTsLinkResolution": true,
+    "theme": "default",
+    "sortEntryPoints": true,
+    "sort": [
+        "kind",
+        "instance-first",
+        "alphabetical"
+    ],
+    "readme": "./README.md",
+    "pretty": true,
+    "preserveLinkText": true,
+    "plugin": ["typedoc-plugin-coverage"],
+     "navigation": {
+        "includeCategories": true,
+        "includeGroups": false,
+        "includeFolders": true
+    },
+    "navigationLinks": {
+        "Home": "/index.html",
+        "twitter":"http://www.x.com/codeauthor1"
+    }
+}

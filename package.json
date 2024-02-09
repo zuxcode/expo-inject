@@ -2,22 +2,35 @@
   "name": "expo-inject",
   "version": "1.0.0",
   "description": "expo inject is use to inject native code",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/app.plugin.js",
+  "types": "lib/plugins/index.d.ts",
   "scripts": {
-    "start": "expo start",
     "build": "tsc",
-    "clean": "rimraf ./lib"
+    "clean": "rimraf ./lib && rimraf ./doc",
+    "dev": "yarn run build && npx yalc publish",
+    "tsdoc": "tsdoc",
+    "prettier": "prettier --write .",
+    "release": "yarn run clean && yarn run build && yarn run jsdoc && publish.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "expo-module-scripts": "^3.4.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
-    "expo-module-scripts": "^3.4.1",
-    "jsdoc": "^4.0.2",
+    "clean-jsdoc-theme": "^4.2.17",
+    "colorette": "^2.0.20",
+    "docdash": "^2.0.2",
+    "inquirer": "^9.2.14",
+    "jsdoc-to-markdown": "^8.0.1",
+    "nanospinner": "^1.1.0",
+    "prettier": "^3.2.5",
     "release": "^6.3.1",
     "rimraf": "^5.0.5",
-    "typescript": "^5.1.3"
+    "typedoc": "^0.25.7",
+    "typedoc-plugin-coverage": "^3.0.0",
+    "typescript": "^5.1.3",
+    "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
     "expo": "*",
@@ -38,5 +51,5 @@
   "author": "codeauthor1 <codeauthor2000@gmail.com> (https://github.com/Codeauthor1/expo-inject.git)",
   "license": "MIT",
   "homepage": "https://github.com/Codeauthor1/expo-inject.git#readme#readme",
-  "private": true
+  "private": false
 }
