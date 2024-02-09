@@ -2,8 +2,9 @@
   "extends": "expo-module-scripts/tsconfig.plugin",
   "compilerOptions": {
     "declaration": true,
-    "strict": true,
-    "outDir": "lib",
-    "rootDir": "src"
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "outDir": "./lib",
+    "strict": true
   }
 }

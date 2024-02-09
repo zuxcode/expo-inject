@@ -1,3 +1,10 @@
+/**
+ * @package expo-inject
+ * @author codeauthor1
+ * @version 1.0.0
+ * 
+ */
+
 import {
   type ConfigPlugin,
   withStringsXml,
@@ -28,11 +35,50 @@ export interface WithStringXmlProps {
 }
 
 /**
+ * @module withStringXml
  * Adds string resources to the Android project's `strings.xml` file.
- * @module module:withStringXml
  * @param {AndroidConfig.ProjectConfig} config - The Android project configuration.
  * @param {WithStringXmlProps} props - The properties to be added to the `strings.xml` file.
  * @returns {AndroidConfig.ProjectConfig} The updated Android project configuration.
+ *
+ * @since 1.0.0
+ * 
+ * ## Example
+ *
+ * create a new file (`inject.js`) in root of your project where your `app.json` is located
+ *
+ * @example
+ * ```js
+ * module.exports = require('expo-inject);
+ * ```
+ * ## or
+ *
+ * ```js
+ * const { withStringXml } = require('expo-inject);
+ *
+ * module.exports = withStringXml;
+ * ```
+ *
+ * ### in your `app.json` file, add the file to the plugin array as pass the required props
+ *
+ * ```js
+ * // app.json
+ *
+ * {
+ *  "expo":{
+ *  ...otherProps,
+ * "plugins": [
+ * ["./inject.js", {
+ * "name": "",
+ * "value": "",
+ * "translatable": "",
+ * "tools:targetApi": ""
+ * }]
+ * ]
+ * }
+ * }
+ *
+ * ```
  */
 export const withStringXml: ConfigPlugin<WithStringXmlProps> = (
   config,
