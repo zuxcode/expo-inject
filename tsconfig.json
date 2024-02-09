@@ -1,6 +1,9 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "expo-module-scripts/tsconfig.plugin",
   "compilerOptions": {
-    "strict": true
+    "declaration": true,
+    "strict": true,
+    "outDir": "lib",
+    "rootDir": "src"
   }
 }
