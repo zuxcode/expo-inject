@@ -81,9 +81,10 @@ export interface WithExpoInjectStringsXmlProps {
  * ```
  * if the file is not defined expo-inject will return default config
  */
-export const withExpoInjectStringsXml: ConfigPlugin<
-  WithExpoInjectStringsXmlProps
-> = (config, props) => {
+const withExpoInjectStringsXml: ConfigPlugin<WithExpoInjectStringsXmlProps> = (
+  config,
+  props
+) => {
   const { file, name, value, translatable, targetApi } = props;
 
   // Check if the file to inject is strings.xml
@@ -109,3 +110,5 @@ export const withExpoInjectStringsXml: ConfigPlugin<
   // Return default config if the file is not strings.xml
   return withStringsXml(config, (mod) => mod);
 };
+
+module.exports = withExpoInjectStringsXml;
