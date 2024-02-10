@@ -10,7 +10,7 @@
     "dev": "yarn run build && npx yalc publish",
     "typedoc": "rimraf ./doc && typedoc",
     "prettier": "prettier --write .",
-    "release": "yarn clean && yarn build && yarn typedoc && node publish.js"
+    "release": "yarn clean && yarn build && yarn typedoc && node publish.mjs"
   },
   "dependencies": {
     "expo-module-scripts": "^3.4.1"
@@ -18,11 +18,9 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
-    "clean-jsdoc-theme": "^4.2.17",
     "colorette": "^2.0.20",
     "docdash": "^2.0.2",
     "inquirer": "^9.2.14",
-    "jsdoc-to-markdown": "^8.0.1",
     "nanospinner": "^1.1.0",
     "prettier": "^3.2.5",
     "release": "^6.3.1",
