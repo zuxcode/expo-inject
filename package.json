@@ -8,9 +8,9 @@
     "build": "tsc",
     "clean": "rimraf ./lib && rimraf ./doc",
     "dev": "yarn run build && npx yalc publish",
-    "tsdoc": "tsdoc",
+    "typedoc": "rimraf ./doc && typedoc",
     "prettier": "prettier --write .",
-    "release": "yarn run clean && yarn run build && yarn run jsdoc && publish.js"
+    "release": "yarn clean && yarn build && yarn typedoc && node publish.js"
   },
   "dependencies": {
     "expo-module-scripts": "^3.4.1"
