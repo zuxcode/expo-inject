@@ -67,7 +67,7 @@ function publishPackage() {
     color: "blue",
   });
 
-  exec("git checkout -b feature_release", (error) => {
+  exec("git checkout feature_release", (error) => {
     if (error) throw new Error(error);
 
     exec("git fetch origin", (error) => {
