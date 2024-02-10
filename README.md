@@ -26,7 +26,9 @@ Create a new file (app.plugin.js) in the root of your project where your app.jso
 
 ```js
 // app.plugin.js
-module.exports = require("expo-inject");
+const { withExpoInjectStringsXml } = require("expo-inject");
+
+module.exports = withExpoInjectStringsXml;
 ```
 
 In your app.json file, add the file to the plugin array and pass the required props.
