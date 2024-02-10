@@ -57,9 +57,9 @@ async function updateVersion(version) {
             });
             if (error) throw new Error(error);
 
-            exec(`git push origin v${newVersion}`, (error) => {
+            exec(`git push origin v${version}`, (error) => {
               spinner.start({
-                text: colorette.green(`git push origin v${newVersion}\n`),
+                text: colorette.green(`git push origin v${version}\n`),
                 color: "blue",
               });
               if (error) throw new Error(error);
