@@ -22,10 +22,10 @@ yarn add -D expo-inject
 
 ### Example
 
-Create a new file (inject.js) in the root of your project where your app.json is located.
+Create a new file (app.plugin.js) in the root of your project where your app.json is located.
 
 ```js
-// inject.js
+// app.plugin.js
 module.exports = require("expo-inject");
 ```
 
