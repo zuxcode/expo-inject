@@ -1,1 +1,1 @@
-module.exports = require("./plugins/index");
+module.exports = require("./plugins/withExpoInjectStringXml");
