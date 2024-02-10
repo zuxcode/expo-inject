@@ -2,13 +2,14 @@
  * @package expo-inject
  * @author codeauthor1
  * @version 1.0.0
- * 
+ *
  */
 
 import {
   type ConfigPlugin,
-  withStringsXml,
+  withStringsXml as withDefaultStringXml,
   AndroidConfig,
+  withStringsXml,
 } from "@expo/config-plugins";
 
 /**
@@ -16,6 +17,10 @@ import {
  * @interface WithStringXmlProps
  */
 export interface WithStringXmlProps {
+  /**
+   * the file to inject
+   */
+  file: "sting.xml";
   /**
    * The name of the string resource.
    */
@@ -31,7 +36,7 @@ export interface WithStringXmlProps {
   /**
    * Specifies the target API level.
    */
-  "tools:targetApi"?: string | undefined;
+  targetApi?: string | undefined;
 }
 
 /**
@@ -42,61 +47,66 @@ export interface WithStringXmlProps {
  * @returns {AndroidConfig.ProjectConfig} The updated Android project configuration.
  *
  * @since 1.0.0
- * 
+ *
  * ## Example
  *
  * create a new file (`inject.js`) in root of your project where your `app.json` is located
  *
  * @example
  * ```js
+ * // inject.js
  * module.exports = require('expo-inject);
- * ```
- * ## or
- *
- * ```js
- * const { withStringXml } = require('expo-inject);
- *
- * module.exports = withStringXml;
  * ```
  *
  * ### in your `app.json` file, add the file to the plugin array as pass the required props
  *
- * ```js
+ * ```json
  * // app.json
- *
  * {
- *  "expo":{
- *  ...otherProps,
- * "plugins": [
- * ["./inject.js", {
- * "name": "",
- * "value": "",
- * "translatable": "",
- * "tools:targetApi": ""
- * }]
- * ]
- * }
+ *  "expo": {
+ *     ...otherProps,
+ *     "plugins": [
+ *       ["./inject.js", {
+ *          "file": "string.xml",
+ *         "name": "string_name",
+ *         "value": "string_value",
+ *         "translatable": "true",
+ *         "targetApi": ""
+ *       }]
+ *     ]
+ *   }
  * }
  *
  * ```
+ * if the file is not defined expo-inject will return default config
  */
 export const withStringXml: ConfigPlugin<WithStringXmlProps> = (
   config,
-  { name, value, translatable, "tools:targetApi": tools }
-) =>
-  withStringsXml(config, (modConfig) => {
-    modConfig.modResults = AndroidConfig.Strings.setStringItem(
-      [
-        {
-          _: value,
-          $: {
-            name,
-            translatable: translatable || undefined,
-            "tools:targetApi": tools,
+  props,
+) => {
+  const { name, value, translatable, targetApi, file } = props;
+  
+  // Check if the file to inject is strings.xml
+    if(file === 'sting.xml'){
+       return  withStringsXml(config, (modConfig) => {
+      modConfig.modResults = AndroidConfig.Strings.setStringItem(
+        [
+          {
+            _: value,
+            $: {
+              name,
+              translatable: translatable || undefined,
+              "tools:targetApi": targetApi,
+            },
           },
-        },
-      ],
-      modConfig.modResults
-    );
-    return modConfig;
-  });
+        ],
+        modConfig.modResults
+      );
+      return modConfig;
+    });
+  }
+
+  // Return default config if the file is not strings.xml
+   return withDefaultStringXml(config, (mod) => mod);
+
+};

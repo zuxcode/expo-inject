@@ -47,7 +47,7 @@ async function updateVersion(version) {
                 if (error) throw new Error(error);
                 spinner.success({
                   text: GREEN(
-                    `SassifyPro v${newVersion} has been successfully released!`,
+                    `expo-inject v${newVersion} has been successfully released!`
                   ),
                 });
               });

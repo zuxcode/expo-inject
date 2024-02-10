@@ -1,2 +1,8 @@
 src/
 test/
+docs/
+.vscode/
+.git/
+static/
+.gitignore
+publish.js
