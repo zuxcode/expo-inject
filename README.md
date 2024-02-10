@@ -1,4 +1,4 @@
-# expo-inject
+# Expo Inject
 
 [![Expo version](https://badge.fury.io/js/expo.svg)](https://badge.fury.io/js/expo.svg)
 
@@ -57,17 +57,17 @@ If the file to inject is not defined, expo-inject will return the default config
 ## API
 
 ```js
-withStringXml(config, props);
+withExpoInjectStringsXml(config, props);
 ```
 
 Adds string resources to the Android project's strings.xml file.
 
 - config (AndroidConfig.ProjectConfig): The Android project configuration.
-- props (WithStringXmlProps): The properties to be added to the strings.xml file.
+- props (withExpoInjectStringsXml): The properties to be added to the strings.xml file.
 - file (string): The file to inject. Must be "strings.xml".
 - name (string): The name of the string resource.
 - value (string): The value of the string resource.
-- translatable (string, optional): Whether the string is translatable. Defaults to "".
+- translatable (string, optional): Whether the string is translatable.
 - targetApi (string, optional): Specifies the target API level.
 - Returns the updated Android project configuration if file is "strings.xml", otherwise returns the default configuration.
 

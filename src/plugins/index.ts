@@ -1,1 +1,4 @@
-export { WithStringXmlProps, withStringXml } from "./withStringXml";
+export {
+  WithExpoInjectStringsXmlProps,
+  withExpoInjectStringsXml,
+} from "./withExpoInjectStringXml";

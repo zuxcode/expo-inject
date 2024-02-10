@@ -1,22 +1,21 @@
 /**
  * @package expo-inject
  * @author codeauthor1
- * @version 1.0.0
+ * @version 1.0.1
  *
  */
 
 import {
   type ConfigPlugin,
-  withStringsXml as withDefaultStringXml,
-  AndroidConfig,
   withStringsXml,
+  AndroidConfig,
 } from "@expo/config-plugins";
 
 /**
  * Interface for specifying properties related to string.xml.
- * @interface WithStringXmlProps
+ * @interface WithExpoInjectStringsXmlProps
  */
-export interface WithStringXmlProps {
+export interface WithExpoInjectStringsXmlProps {
   /**
    * the file to inject
    */
@@ -40,12 +39,14 @@ export interface WithStringXmlProps {
 }
 
 /**
- * @module withStringXml
- * Adds string resources to the Android project's `strings.xml` file.
- * @param {AndroidConfig.ProjectConfig} config - The Android project configuration.
- * @param {WithStringXmlProps} props - The properties to be added to the `strings.xml` file.
- * @returns {AndroidConfig.ProjectConfig} The updated Android project configuration.
+ * @module module:withExpoInjectStringsXml
  *
+ * Adds string resources to the Android project's `strings.xml` file.
+ *
+ * @param {@link ExpoConfig} config - The Android project configuration.
+ * @param {WithExpoInjectStringsXmlProps} props - The properties to be added to the `strings.xml` file.
+ * @returns {AndroidConfig.Resources.ResourceXML} The updated Android project configuration.
+ * @link  AndroidConfig.Resources.ResourceXML
  * @since 1.0.0
  *
  * ## Example
@@ -80,15 +81,14 @@ export interface WithStringXmlProps {
  * ```
  * if the file is not defined expo-inject will return default config
  */
-export const withStringXml: ConfigPlugin<WithStringXmlProps> = (
-  config,
-  props,
-) => {
-  const { name, value, translatable, targetApi, file } = props;
-  
+export const withExpoInjectStringsXml: ConfigPlugin<
+  WithExpoInjectStringsXmlProps
+> = (config, props) => {
+  const { file, name, value, translatable, targetApi } = props;
+
   // Check if the file to inject is strings.xml
-    if(file === 'sting.xml'){
-       return  withStringsXml(config, (modConfig) => {
+  if (file === "sting.xml") {
+    return withStringsXml(config, (modConfig) => {
       modConfig.modResults = AndroidConfig.Strings.setStringItem(
         [
           {
@@ -96,7 +96,7 @@ export const withStringXml: ConfigPlugin<WithStringXmlProps> = (
             $: {
               name,
               translatable: translatable || undefined,
-              "tools:targetApi": targetApi,
+              "tools:targetApi": targetApi || undefined,
             },
           },
         ],
@@ -107,6 +107,5 @@ export const withStringXml: ConfigPlugin<WithStringXmlProps> = (
   }
 
   // Return default config if the file is not strings.xml
-   return withDefaultStringXml(config, (mod) => mod);
-
+  return withStringsXml(config, (mod) => mod);
 };

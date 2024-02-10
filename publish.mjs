@@ -27,7 +27,7 @@ async function updateVersion(version) {
 
     const isValidVersion = versionRegex.test(newVersion);
 
-    if (!isValidVersion) return null;
+    if (!isValidVersion) throw new Error("Invalid version provided");
 
     exec(`npm version ${newVersion} --no-git-tag-version`, (error) => {
       if (error) throw new Error(error);
