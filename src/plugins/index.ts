@@ -1,4 +1,1 @@
-export {
-  WithExpoInjectStringsXmlProps,
-  withExpoInjectStringsXml,
-} from "./withExpoInjectStringXml";
+module.exports = require("./withExpoInjectStringXml");

@@ -5,6 +5,8 @@
     "esModuleInterop": true,
     "rootDir": "src",
     "outDir": "./lib",
-    "strict": true
+    "strict": true,
+    "target": "ES5",
+    "removeComments": true
   }
 }

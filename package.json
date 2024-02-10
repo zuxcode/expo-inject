@@ -1,9 +1,9 @@
 {
   "name": "expo-inject",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "expo inject is use to inject native code",
   "main": "lib/app.plugin.js",
-  "types": "lib/plugins/index.d.ts",
+  "types": "./lib/app.plugin.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf ./lib && rimraf ./doc",
