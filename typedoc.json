@@ -1,6 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./src/plugins/index.ts"],
+  "entryPoints": ["./src/app.plugin.ts"],
   "out": "docs",
   "name": "Expo Inject",
   "sidebarLinks": {

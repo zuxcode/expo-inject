@@ -57,23 +57,31 @@ async function updateVersion(version) {
             });
             if (error) throw new Error(error);
 
-            exec(`git push origin v${newVersion}`, (error) => {
+            exec(`git tag v${newVersion}`, (error) => {
               spinner.start({
                 text: colorette.green(`git push origin v${newVersion}\n`),
                 color: "blue",
               });
               if (error) throw new Error(error);
 
-              exec("npm publish", (error) => {
+              exec(`git push origin v${newVersion}`, (error) => {
                 spinner.start({
-                  text: colorette.green(`npm publish\n`),
+                  text: colorette.green(`git push origin v${newVersion}\n`),
                   color: "blue",
                 });
                 if (error) throw new Error(error);
-                spinner.success({
-                  text: GREEN(
-                    `expo-inject v${newVersion} has been successfully released!`
-                  ),
+
+                exec("npm publish", (error) => {
+                  spinner.start({
+                    text: colorette.green(`npm publish\n`),
+                    color: "blue",
+                  });
+                  if (error) throw new Error(error);
+                  spinner.success({
+                    text: GREEN(
+                      `expo-inject v${newVersion} has been successfully released!`
+                    ),
+                  });
                 });
               });
             });
