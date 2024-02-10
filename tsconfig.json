@@ -6,7 +6,7 @@
     "rootDir": "src",
     "outDir": "./lib",
     "strict": true,
-    "target": "ES2022",
+    "target": "ES5",
     "removeComments": true
   }
 }

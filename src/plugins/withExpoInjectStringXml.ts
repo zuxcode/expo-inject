@@ -19,7 +19,7 @@ export interface WithExpoInjectStringsXmlProps {
   /**
    * the file to inject
    */
-  file: "sting.xml";
+  file: "string.xml";
   /**
    * The name of the string resource.
    */
@@ -87,7 +87,7 @@ export const withExpoInjectStringsXml: ConfigPlugin<
   const { file, name, value, translatable, targetApi } = props;
 
   // Check if the file to inject is strings.xml
-  if (file === "sting.xml") {
+  if (file === "string.xml") {
     return withStringsXml(config, (modConfig) => {
       modConfig.modResults = AndroidConfig.Strings.setStringItem(
         [
